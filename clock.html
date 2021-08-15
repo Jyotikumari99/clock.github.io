@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>clock</title>
+  <!-- <script src="index.js"></script>-->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #clock {
+      background-color: rgb(7, 7, 7);
+      height: 40vw;
+      width: 40vw;
+      background: url("clock.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 3px solid red;
+      margin: auto;
+      justify-content: center;
+      position: relative;
+    }
+
+    #hour,
+    #minute,
+    #second {
+      position: relative;
+      background-color: rgb(0, 0, 0);
+      border: rgb(241, 241, 241);
+      border-radius: 10px;
+      transform-origin: bottom;
+    }
+
+    #hour {
+      width: 1.8%;
+      height: 17%;
+      top: 35.2%;
+      left: 49.1%;
+      opacity: 0.8;
+      /*display: none;/*to view only hour hand*/
+    }
+
+    #minute {
+      width: 1.6%;
+      height: 23%;
+      top: 12.5%;
+      top: 12.2%;
+      left: 49.1%;
+      opacity: 0.8;
+      /*display: none;/*to view only hour hand*/
+    }
+
+    #second {
+      width: 1.4%;
+      height: 34%;
+      top: 18.5%;
+      top: -21.5%;
+      left: 49.6%;
+      opacity: 0.8;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div id="clock">
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+  </div>
+
+  <script>
+    //30h+m/2=for h hour
+    //12hr->360deg
+    //60min->30deg  both hr hand
+    //60min->360deg
+    //60sec->360degboth min hand
+    //60sec->360deg sec hand
+    
+    setInterval(() => {
+      date = new Date();
+      hrtime = date.getHours();
+      mintime = date.getMinutes();
+      sectime = date.getSeconds();
+      hrrotation = 30 * hrtime + mintime / 2;
+      minrotaton = 6 * mintime;
+      secrotation = 6 * sectime;
+      hour.style.transform = `rotate(${hrrotation}deg)`
+      minute.style.transform = `rotate(${minrotaton}deg)`
+      second.style.transform = `rotate(${secrotation}deg)`
+    }, 1000)//to get anything 1000 times
+  </script>
+</body>
+
+</html>
